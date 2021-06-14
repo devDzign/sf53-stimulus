@@ -27,4 +27,9 @@ class PostContentType extends AbstractType
             'data_class' => Post::class,
         ]);
     }
+
+    public function getBlockPrefix()
+    {
+        return '';
+    }
 }

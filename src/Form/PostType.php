@@ -8,6 +8,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class PostType extends AbstractType
 {
@@ -37,7 +39,13 @@ class PostType extends AbstractType
                         'data-controller' => "start-input",
                         'data-start-input-url-api-value'   => $this->urlGenerator->generate('api_posts_post_collection'),
                         'data-action'=> 'focusout->start-input#changeHandler'
-                    ]
+                    ],
+                    'constraints' => [
+                        new NotBlank([
+                            'message' => 'Please enter a name',
+                        ]),
+
+                    ],
 
                 ]
             );
