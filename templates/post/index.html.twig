@@ -5,11 +5,20 @@
 {% block body %}
 <div class="container">
     <div class="row">
-        <div class="col-12">
-            <h1>Test boot</h1>
-            <button class="btn btn-dark">
-                test
-            </button>
+        <div class="col-12 mt-5">
+            <div class="row">
+                {{ form_start(form, {attr: {'novalidate': 'novalidate'}} ) }}
+                <div class="col-12">
+                    <div class="form-floating">
+                        {{ form_widget(form.name) }}
+                    </div>
+                    {{ form_errors(form.name) }}
+                </div>
+                {{ form_rest(form) }}
+
+                {{ form_end(form) }}
+
+            </div>
 
         </div>
 
