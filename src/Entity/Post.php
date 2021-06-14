@@ -2,11 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\PostRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=PostRepository::class)
+ * @ApiResource(
+ * )
  */
 class Post
 {
@@ -20,7 +23,7 @@ class Post
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $Post;
+    private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -32,14 +35,14 @@ class Post
         return $this->id;
     }
 
-    public function getPost(): ?string
+    public function getName(): ?string
     {
-        return $this->Post;
+        return $this->name;
     }
 
-    public function setPost(string $Post): self
+    public function setName(string $name): self
     {
-        $this->Post = $Post;
+        $this->name = $name;
 
         return $this;
     }
