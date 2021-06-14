@@ -142,7 +142,7 @@ endif
 
 ##
 ## Symfony data base
-##---------------------------------------------------------------------------
+##---------------------------------------------------------------------------ƒƒƒ
 .PHONY: preparedb
 preparedb: ## prepare environment test
 	$(CONSOLE) cache:clear
@@ -151,4 +151,4 @@ preparedb: ## prepare environment test
 	$(CONSOLE) doctrine:migrations:diff
 	$(CONSOLE) doctrine:migrations:migrate -n
 	$(CONSOLE) doctrine:fixture:load -n
-	$(CONSOLE) app:import:legal-categories
+	#$(CONSOLE) app:import:legal-categories
