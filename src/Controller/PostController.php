@@ -16,19 +16,22 @@ class PostController extends AbstractController
      */
     public function index(): Response
     {
-        $form = $this->createForm(PostType::class);
 
         return $this->render('post/index.html.twig', [
-            'url'=> $this->generateUrl("api_posts_post_collection"),
-            "depends"=> [
+            'url' => $this->generateUrl("api_posts_post_collection"),
+            "depends" => [
                 [
-                    "url"=>$this->generateUrl("post_form"),
-                    "field"=> 'name'
+                    "url" => $this->generateUrl("post_form"),
+                    "dependInput" => "name",
+                    "isChanged" => "yes"
+
                 ],
                 [
-                    "url"=>$this->generateUrl("post_form_area"),
-                    "field"=> 'name'
-                ]
+                    "url" => $this->generateUrl("post_form_select"),
+                    "dependInput" => "name",
+                    "isChanged" => "no"
+
+                ],
             ]
         ]);
 

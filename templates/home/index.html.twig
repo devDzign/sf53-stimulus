@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+   <div class="container">
+       <div class="row mt-5">
+           <div class="col">
+               <form>
+                   <div
+                           class="input-group mb-3"
+                           {{ stimulus_controller('search--preview') }}
+                   >
+                       <input
+                               type="search"
+                               name="q"
+                               value="{{ searchTerm }}"
+                               class="form-control"
+                               placeholder="Search post..."
+                               aria-label="Recipient's username"
+                               aria-describedby="button-addon2"
+                               data-action="search--preview#searchHandler"
+                       >
+                       <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
+                   </div>
+               </form>
+           </div>
+           <div class="col-12">
+               <div class="row">
+                   {% for post in posts %}
+                       <div class="col-3">
+                           <div class="card mb-2" style="width: 18rem;">
+                               <div class="card-body">
+                                   <h5 class="card-title">Card title</h5>
+                                   <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                                   <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                   <a href="#" class="card-link">Card link</a>
+                                   <a href="#" class="card-link">Another link</a>
+                               </div>
+                           </div>
+                       </div>
+                   {% endfor %}
+               </div>
+           </div>
+       </div>
+   </div>
+{% endblock %}

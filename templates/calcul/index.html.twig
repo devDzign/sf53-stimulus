@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calcul!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div
+                    class="col-12 mt-5"
+                    {{ stimulus_controller(
+                        'calcul',
+                        {urlApi: 'calcul_result'}
+                    ) }}
+            >
+
+                <div class="mb-3">
+                    <input
+                            type="text"
+                            id="result"
+                            class="form-control"
+                            placeholder="D1+D2+D3"
+                            value="0"
+                            data-calcul-target="result"
+                            disabled
+                    >
+                </div>
+
+                <div class="form-floating mb-3"
+                     data-action="focusout->calcul#changeHandler"
+                >
+                    <input type="number" name="data1" class="form-control" id="floatingInput" placeholder="data1"
+                           data-calcul-target="champ">
+                    <label for="floatingInput">D1</label>
+                </div>
+
+                <div class="form-floating mb-3"
+                     data-action="focusout->calcul#changeHandler"
+                >
+                    <input type="number" name="data2" class="form-control" id="floatingInput" placeholder="data2"
+                           data-calcul-target="champ">
+                    <label for="floatingInput">D2</label>
+                </div>
+
+                <div class="form-floating mb-3"
+                     data-action="focusout->calcul#changeHandler"
+                >
+                    <input type="number" name="data3" class="form-control" id="floatingInput" placeholder="data3"
+                           data-calcul-target="champ">
+                    <label for="floatingInput">D3</label>
+                </div>
+
+
+
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

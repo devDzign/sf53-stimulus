@@ -17,9 +17,7 @@ export default class extends Controller {
 
     changeHandler = async (event) => {
 
-
         const url = await this.urlApiValue;
-
         const {value, name} = await event.target;
 
       await fetch(url, {
@@ -33,11 +31,20 @@ export default class extends Controller {
 
           for (const itemElement of this.champTargets) {
               let urlForm = itemElement.dataset.urlForm;
-              const responseHtml = await fetch(urlForm, {
-                  method: 'get',
-              });
-              const formHtml  = await responseHtml.text();
-              itemElement.innerHTML = formHtml;
+              let dependInput = itemElement.dataset.depend;
+              let isChanged = itemElement.dataset.isChanged;
+
+              if(dependInput === name){
+                  const responseHtml = await fetch(urlForm, {
+                      method: 'get',
+                  });
+                  const formHtml  = await responseHtml.text();
+                  if(isChanged === "yes"){
+                       itemElement.innerHTML = formHtml
+                  }else{
+                      itemElement.outerHTML = formHtml
+                  }
+              }
 
           }
 
