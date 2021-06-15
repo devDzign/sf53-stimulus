@@ -27,7 +27,7 @@ class PostController extends AbstractController
 
                 ],
                 [
-                    "url" => $this->generateUrl("post_form_select"),
+                    "url" => $this->generateUrl("post_form"),
                     "dependInput" => "name",
                     "isChanged" => "no"
 
