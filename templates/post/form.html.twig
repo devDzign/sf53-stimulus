@@ -1,6 +1,27 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-{{ form_end(form) }}
+<section  {{ stimulus_controller('render-form') }}>
+    <div class="form-floating mb-3">
+    <textarea
+            name="content"
+            class="form-control"
+            id="floatingInput" placeholder="content"
+
+            data-action="focusout->render-form#changeHandler"
+    >
+
+    </textarea>
+        <label for="floatingInput">Contenue</label>
+    </div>
+
+    <div
+            class="form-floating mb-3"
+            data-render-form-target="champ"
+            data-url-form="/api/form"
+    >
+
+
+    </div>
+</section>
+
 
 
 

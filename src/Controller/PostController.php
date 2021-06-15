@@ -19,8 +19,17 @@ class PostController extends AbstractController
         $form = $this->createForm(PostType::class);
 
         return $this->render('post/index.html.twig', [
-            'form' => $form->createView(),
-            'urlApi'=> $this->generateUrl("api_posts_post_collection")
+            'url'=> $this->generateUrl("api_posts_post_collection"),
+            "depends"=> [
+                [
+                    "url"=>$this->generateUrl("post_form"),
+                    "field"=> 'name'
+                ],
+                [
+                    "url"=>$this->generateUrl("post_form2"),
+                    "field"=> 'name'
+                ]
+            ]
         ]);
 
     }
@@ -30,10 +39,16 @@ class PostController extends AbstractController
      */
     public function getForm(): Response
     {
-        $form = $this->createForm(PostContentType::class);
-        return new Response($this->renderView('post/form.html.twig', [
-            'form'=> $form->createView()
-        ]));
+        return new Response($this->renderView('post/form.html.twig'));
+
+    }
+
+    /**
+     * @Route("/api/form2", name="post_form2")
+     */
+    public function getForm2(): Response
+    {
+        return new Response($this->renderView('post/form2.html.twig'));
 
     }
 }

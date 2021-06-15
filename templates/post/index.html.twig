@@ -3,28 +3,35 @@
 {% block title %}Hello PostController!{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
-        <div class="col-12 mt-5">
-            <div class="row">
-                {{ form_start(form, {attr: {'novalidate': 'novalidate'}} ) }}
-                <div class="col-12">
-                    <div class="form-floating">
-                        {{ form_widget(form.name) }}
-                    </div>
-                    {{ form_errors(form.name) }}
+    <div class="container">
+        <div class="row">
+            <div
+                    class="col-12 mt-5"
+                    {{ stimulus_controller('start-input',{urlApi: url}) }}
+            >
+
+                <div class="form-floating mb-3"
+                     data-action="focusout->start-input#changeHandler"
+                >
+                    <input type="text" name="name" class="form-control" id="floatingInput" placeholder="name">
+                    <label for="floatingInput">title</label>
                 </div>
-                <div data-depend-on="name" data-start-input-url-api-value="api/form">
+
+                {% for depend in depends %}
+                <div
+                        class="form-floating mb-3"
+                        data-start-input-target="champ"
+                        data-url-form="{{ depend.url}}"
+                >
+
 
                 </div>
-                {{ form_rest(form) }}
 
-                {{ form_end(form) }}
+                {% endfor %}
+
 
             </div>
 
         </div>
-
     </div>
-</div>
 {% endblock %}
