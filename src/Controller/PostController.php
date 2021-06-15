@@ -26,7 +26,7 @@ class PostController extends AbstractController
                     "field"=> 'name'
                 ],
                 [
-                    "url"=>$this->generateUrl("post_form2"),
+                    "url"=>$this->generateUrl("post_form_area"),
                     "field"=> 'name'
                 ]
             ]
@@ -44,11 +44,20 @@ class PostController extends AbstractController
     }
 
     /**
-     * @Route("/api/form2", name="post_form2")
+     * @Route("/api/form2", name="post_form_area")
      */
-    public function getForm2(): Response
+    public function getFormArea(): Response
     {
-        return new Response($this->renderView('post/form2.html.twig'));
-
+        return new Response($this->renderView('post/form_area.html.twig'));
     }
+
+
+    /**
+     * @Route("/api/form_select", name="post_form_select")
+     */
+    public function getFormSelect(): Response
+    {
+        return new Response($this->renderView('post/form_select.html.twig'));
+    }
+
 }
