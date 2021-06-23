@@ -16,6 +16,8 @@ framework:
     #fragments: true
     php_errors:
         log: true
+fos_js_routing:
+    routes_to_expose: [ 'api_dossiers_put_item' ]
 
 when@test:
     framework:
